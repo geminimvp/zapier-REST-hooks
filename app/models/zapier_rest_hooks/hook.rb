@@ -18,6 +18,8 @@ module ZapierRestHooks
             if response.code.eql? 410
               Rails.logger.info "Destroying REST hook because of 410 response: #{hook.inspect}"
               hook.destroy
+            else
+              Rails.logger.info "REST hook POST response #{response.code} with body #{response.body}"
             end
           end
         end
